@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gojeeri Maliwar | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-sub: #b0b0b0;
+            --accent: #a29bfe;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(102, 126, 234, 0.15) 0, transparent 50%), 
+                radial-gradient(at 100% 100%, rgba(118, 75, 162, 0.15) 0, transparent 50%);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 60px 20px;
+        }
+
+        /* --- Header Section --- */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .img-container {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            flex-shrink: 0;
+        }
+
+        .img-container::before {
+            content: '';
+            position: absolute;
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0.7;
+        }
+
+        .header img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header-text {
+            text-align: left;
+        }
+
+        .header h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, #fff, #a29bfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header .role {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .header .college {
+            color: var(--text-sub);
+            font-size: 1rem;
+        }
+
+        /* --- Grid Layout for Sections --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .section {
+            animation: slideUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 30px;
+            height: 100%;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(162, 155, 254, 0.4);
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 i {
+            color: var(--accent);
+        }
+
+        /* --- Skills --- */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: rgba(162, 155, 254, 0.1);
+            border: 1px solid rgba(162, 155, 254, 0.2);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* --- Footer --- */
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-btn {
+            color: var(--text-main);
+            text-decoration: none;
+            background: var(--glass-bg);
+            padding: 12px 28px;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+            transition: 0.3s;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .social-btn:hover {
+            background: var(--primary-gradient);
+            transform: scale(1.05);
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header { flex-direction: column; text-align: center; }
+            .header-text { text-align: center; }
+            .content-grid { grid-template-columns: 1fr; }
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header class="header">
+        <div class="img-container">
+            <img src="Gojeeri.jpeg" alt="Gojeeri Maliwar">
+        </div>
+        <div class="header-text">
+            <h1>Gojeeri Maliwar</h1>
+            <p class="role">CSE Student | Developer</p>
+            <p class="college">Symbiosis International University</p>
+            <p style="color: var(--text-sub); margin-top: 5px;">Batch of 2024 - 2028</p>
+        </div>
+    </header>
+
+    <div class="content-grid">
+        <div class="section delay-1">
+            <div class="glass-card">
+                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                <h3 style="color: var(--accent); margin-bottom: 5px;">B.Tech in CSE</h3>
+                <p style="font-size: 0.95rem;">Building strong foundations in computer science and engineering at Symbiosis.</p>
+            </div>
+        </div>
+
+        <div class="section delay-1">
+            <div class="glass-card">
+                <h2><i class="fas fa-code"></i> Technical Stack</h2>
+                <div class="skills-grid">
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">SQL</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section delay-2">
+            <div class="glass-card">
+                <h2><i class="fas fa-laptop-code"></i> Featured Work</h2>
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: var(--accent);">Personal Portfolio</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-sub);">A modern glassmorphism web design.</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent);">Algorithm Library</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-sub);">Implementation of core DSA in C++.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section delay-2">
+            <div class="glass-card">
+                <h2><i class="fas fa-link"></i> Connect</h2>
+                <p style="font-size: 0.9rem; margin-bottom: 20px;">Open for collaborations and technical discussions.</p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <span class="skill-tag"><i class="fab fa-linkedin"></i> LinkedIn</span>
+                    <span class="skill-tag"><i class="fab fa-github"></i> GitHub</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a href="mailto:gojeeri.maliwar@example.com" class="social-btn">
+            <i class="fas fa-envelope"></i> Email Me
+        </a>
+        <a href="#" class="social-btn">
+            <i class="fas fa-file-alt"></i> Resume
+        </a>
+    </footer>
+
+</div>
+
+</body>
+</html>
